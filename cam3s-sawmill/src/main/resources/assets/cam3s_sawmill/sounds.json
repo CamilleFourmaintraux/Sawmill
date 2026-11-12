@@ -1,0 +1,12 @@
+{
+  "ui.sawmill.take_result": {
+    "sounds": [
+      "cam3s_sawmill:sawmill_cut1",
+      "cam3s_sawmill:sawmill_cut2",
+      "cam3s_sawmill:sawmill_cut3",
+      "cam3s_sawmill:sawmill_cut4",
+      "cam3s_sawmill:sawmill_cut5"
+    ],
+    "subtitle": "subtitles.cam3s_sawmill.ui.sawmill.take_result"
+  }
+}

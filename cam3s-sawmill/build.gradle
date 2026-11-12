@@ -1,0 +1,70 @@
+plugins {
+	id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
+}
+
+repositories {
+	// Mod Menu
+	maven {
+		name = "Terraformers"
+		url = "https://maven.terraformersmc.com/releases/"
+	}
+	// Cloth Config
+	maven {
+		name = "Shedaniel"
+		url = "https://maven.shedaniel.me/"
+	}
+}
+
+base {
+	archivesName = project.archives_base_name
+}
+
+loom {
+	// "main" holds the common code (block, menu, recipes, generator, config file),
+	// "client" holds the screen, the config screen and the Mod Menu integration.
+	splitEnvironmentSourceSets()
+
+	mods {
+		"cam3s_sawmill" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+}
+
+dependencies {
+	// To change the versions see the gradle.properties file
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings loom.officialMojangMappings()
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+	// Fabric API: networking, recipe sync, item groups, render layers.
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	// Optional at runtime: the config screen needs both, the mod itself works without them.
+	// modImplementation also puts them in the development client, so the screen can be tested from the IDE.
+	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+	modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
+}
+
+processResources {
+	def version = project.version
+	inputs.property "version", version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 21
+}
+
+java {
+	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+}

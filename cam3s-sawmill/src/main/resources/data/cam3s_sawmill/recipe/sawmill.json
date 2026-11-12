@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "#cam3s_sawmill:stripped_logs",
+    "I": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    " I ",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cam3s_sawmill:sawmill"
+  }
+}

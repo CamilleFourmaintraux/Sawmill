@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "cam3s_sawmill",
+	"version": "${version}",
+	"name": "Cam3's Sawmill",
+	"description": "A stonecutter for wood. Its recipes are generated automatically from crafting recipes, so wood types added by other mods work out of the box.",
+	"authors": [
+		"Camille"
+	],
+	"license": "All-Rights-Reserved",
+	"icon": "assets/cam3s_sawmill/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.camille.cam3ssawmill.Cam3sSawmill"
+		],
+		"client": [
+			"com.camille.cam3ssawmill.client.Cam3sSawmillClient"
+		],
+		"modmenu": [
+			"com.camille.cam3ssawmill.client.ModMenuIntegration"
+		]
+	},
+	"mixins": [
+		"cam3s_sawmill.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.0",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"modmenu": "*",
+		"cloth-config": "*"
+	}
+}
